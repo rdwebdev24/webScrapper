@@ -50,13 +50,13 @@ const getTopic = async () => {
         const url = $(item).attr('href');
         if(!!url) url_arr.push(url);
     })
-    url_arr.forEach( async (url)=>{
-        await getData(url)
-    })
+    for(const url of url_arr) {
+        await getData(url);
+    }
 }
 
-const promise = new Promise((resolve, reject) => {
-    getTopic()
+const promise = new Promise(async (resolve, reject) => {
+    await getTopic()
     resolve()
 });
 
